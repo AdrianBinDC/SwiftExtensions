@@ -12,6 +12,7 @@ A collection of Swift extensions
 **`asString(style:) -> String`**
 
 **Elapsed Time Example:**
+
     let elapsedSeconds: Double = 89032
 
     // "24h 43m 52s"
