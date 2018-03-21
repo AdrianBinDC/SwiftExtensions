@@ -85,6 +85,33 @@ This extension can be used for classes that descend from `UIView`. If you want t
             layer.add(animation, forKey: kCATransitionFade)
         }
     }
+    
+    /// Add UIBlurEffect to UIView
+    func addBlurEffect(_ style: UIBlurEffectStyle, duration: TimeInterval = 1.0) {
+      // create a blank UIVisualEffectView
+      let overlay = UIVisualEffectView()
+      overlay.frame = self.bounds
+      overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+      // Add it to self...
+      self.addSubview(overlay)
+      UIView.animate(withDuration: duration) {
+        // animate the a new effect
+        overlay.effect = UIBlurEffect(style: style)
+      }
+    }
+    
+    
+    /// Remove UIBlurEffect from UIView
+    func removeBlurEffect() {
+      let blurredEffectViews = self.subviews.filter{$0 is UIVisualEffectView}
+      var count = 0
+      blurredEffectViews.forEach{ blurView in
+        blurView.removeFromSuperview()
+        count += 1
+      }
+      print("Removed blur count =", count)
+    }
+
 
 ## String
 
